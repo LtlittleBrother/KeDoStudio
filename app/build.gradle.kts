@@ -11,15 +11,15 @@ kapt {
     }
 }
 android {
-    namespace = "com.kedo.studio"
-    compileSdk = 33
+    namespace = BuildConfig.applicationId
+    compileSdk = BuildConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.kedo.studio"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = BuildConfig.applicationId
+        minSdk = BuildConfig.minSdk
+        targetSdk = BuildConfig.targetSdk
+        versionCode = BuildConfig.versionCode
+        versionName = BuildConfig.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -101,6 +101,7 @@ android {
 dependencies {
 
     implementation(project(":CommonLibrary"))
+    implementation(project(":cocoslibrary"))
     kapt(Other.a_router_compiler)
     testImplementation(AndroidX.test_junit)
     androidTestImplementation(AndroidX.junit)

@@ -1,0 +1,53 @@
+import com.kedo.dependencieplugin.manage.*
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
+}
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.name)
+    }
+}
+android {
+    namespace = BuildConfig.applicationId
+    compileSdk = BuildConfig.compileSdk
+
+    defaultConfig {
+        minSdk = BuildConfig.minSdk
+        targetSdk = BuildConfig.targetSdk
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    flavorDimensions.addAll(listOf("env"))
+    productFlavors {
+        create("offLine") {
+            dimension = "env"
+        }
+        create("preLine") {
+            dimension = "env"
+        }
+        create("onLine") {
+            dimension = "env"
+        }
+        create("onLineArm64") {
+            dimension = "env"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+dependencies {
+    implementation(project(":CommonLibrary"))
+    kapt(Other.a_router_compiler)
+    testImplementation(AndroidX.test_junit)
+    androidTestImplementation(AndroidX.junit)
+    androidTestImplementation(AndroidX.espresso_core)
+}
