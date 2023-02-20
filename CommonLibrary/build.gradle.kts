@@ -12,7 +12,7 @@ kapt {
     }
 }
 android {
-    namespace = BuildConfig.applicationId
+    namespace = "com.kedo.commonlibrary"
     compileSdk = BuildConfig.compileSdk
 
     defaultConfig {
@@ -27,22 +27,34 @@ android {
     productFlavors {
         create("offLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
             buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
         }
         create("preLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
             buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
         }
         create("onLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
             buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
         }
         create("onLineArm64") {
             dimension = "env"
-            ndk { abiFilters.add("arm64-v8a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
             buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
         }
     }

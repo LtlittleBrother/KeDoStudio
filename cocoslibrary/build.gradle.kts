@@ -11,7 +11,7 @@ kapt {
     }
 }
 android {
-    namespace = BuildConfig.applicationId
+    namespace = "com.kedo.cocos"
     compileSdk = BuildConfig.compileSdk
 
     defaultConfig {
@@ -45,8 +45,13 @@ android {
 }
 
 dependencies {
+    api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     implementation(project(":CommonLibrary"))
     kapt(Other.a_router_compiler)
+//    compileOnly("libs/android-async-http-1.4.9.jar")
+//    compileOnly("libs/httpclient-4.4.1.1.jar")
+//    implementation("libs/com.android.vending.expansion.zipfile.jar")
+//    implementation("libs/oppoSDK.jar")
     testImplementation(AndroidX.test_junit)
     androidTestImplementation(AndroidX.junit)
     androidTestImplementation(AndroidX.espresso_core)

@@ -1,4 +1,5 @@
 import com.kedo.dependencieplugin.manage.*
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -68,19 +69,31 @@ android {
     productFlavors {
         create("offLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
         }
         create("preLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
         }
         create("onLine") {
             dimension = "env"
-            ndk { abiFilters.add("armeabi-v7a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
         }
         create("onLineArm64") {
             dimension = "env"
-            ndk { abiFilters.add("arm64-v8a") }
+            ndk {
+                abiFilters.add("armeabi-v7a")
+                abiFilters.add("x86_64")
+            }
         }
     }
 
