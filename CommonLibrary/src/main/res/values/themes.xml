@@ -14,34 +14,22 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.commonStyle" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
 
     <style name="Theme.SplashScreen" parent="Theme.SplashScreenBase">
-        <item name="postSplashScreenTheme">?android:attr/theme</item>
-        <item name="windowSplashScreenAnimationDuration">@integer/default_icon_animation_duration</item>
-        <item name="windowSplashScreenBackground">@android:color/background_light</item>
-        <item name="windowSplashScreenAnimatedIcon">@android:drawable/sym_def_app_icon</item>
+        <!--   用特定的单一颜色填充背景     -->
+        <item name="windowSplashScreenBackground">@color/color_white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher</item>
     </style>
 
-    <style name="Theme.SplashScreenBase" parent="android:Theme.NoTitleBar">
-        <item name="android:windowBackground">@drawable/compat_splash_screen</item>
+    <style name="Theme.SplashScreenBase" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowBackground">@color/color_white</item>
         <item name="android:opacity">opaque</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:fitsSystemWindows">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+<!--        <item name="postSplashScreenTheme">@style/Theme.ProjectMVI</item>-->
+        <item name="windowSplashScreenAnimationDuration">1000</item>
     </style>
 
 </resources>

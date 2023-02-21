@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KeDoStudio"
+        android:theme="@style/Theme.SplashScreen"
         tools:targetApi="31">
         <activity
             android:name="com.kedo.app.MainActivity"

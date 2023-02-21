@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SplashScreen" parent="Theme.SplashScreenBase">
+        <item name="postSplashScreenTheme">?android:attr/theme</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_launcher</item>
+    </style>
+</resources>
