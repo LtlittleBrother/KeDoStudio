@@ -79,6 +79,7 @@ dependencies {
     api(AndroidX.appcompat)
     api(AndroidX.activity)
     api(AndroidX.fragment)
+    api(AndroidX.constraintlayout)
     api(AndroidX.lifecycle)
     api(AndroidX.lifecycle_viewmodel_ktx)
     api(AndroidX.lifecycle_livedata_ktx)
@@ -88,6 +89,8 @@ dependencies {
     api(AndroidX.splash_screen)
     api(AndroidX.datastore_preferences)
     api(AndroidX.datastore_core)
+    annotationProcessor(AndroidX.room_compiler)
+    api(AndroidX.room_runtime)
 
     api(Other.adapter)
     api(Other.retrofit2)

@@ -27,4 +27,6 @@ object AndroidX {
     const val transition = "androidx.transition:transition-ktx:1.4.1"
     const val datastore_preferences  = "androidx.datastore:datastore-preferences:${Version.datastore_version}"
     const val datastore_core = "androidx.datastore:datastore-core:${Version.datastore_version}"
+    const val room_runtime = "androidx.room:room-runtime:${Version.room_version}"
+    const val room_compiler = "androidx.room:room-compiler${Version.room_version}"
 }

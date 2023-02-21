@@ -20,4 +20,6 @@ object Version {
 
     const val datastore_version = "1.0.0"
 
+    const val room_version = "2.5.0"
+
 }
