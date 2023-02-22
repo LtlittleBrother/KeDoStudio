@@ -103,6 +103,9 @@ dependencies {
     api(Other.a_router)
     api(Other.unPeekLivedata)
     api(Other.retrofitUrlManager)
+    api(Other.ok_download)
+    api(Other.ok_download_sqlite)
+    api(Other.ok_download_okhttp)
     kapt(Other.a_router_compiler)
 
     testImplementation(AndroidX.test_junit)

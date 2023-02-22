@@ -22,4 +22,6 @@ object Version {
 
     const val room_version = "2.5.0"
 
+    const val ok_download_version = "1.0.8-SNAPSHOT"
+
 }

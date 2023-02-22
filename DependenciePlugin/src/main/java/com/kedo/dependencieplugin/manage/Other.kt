@@ -26,4 +26,8 @@ object Other {
     const val unPeekLivedata = "com.kunminx.arch:unpeek-livedata:7.8.0"
     // RetrofitUrlManager
     const val retrofitUrlManager = "com.github.JessYanCoding:RetrofitUrlManager:v1.4.0"
+    //ok_download
+    const val ok_download = "com.liulishuo.okdownload:okdownload:${Version.ok_download_version}"
+    const val ok_download_sqlite = "com.liulishuo.okdownload:sqlite:${Version.ok_download_version}"
+    const val ok_download_okhttp = "com.liulishuo.okdownload:okhttp:${Version.ok_download_version}"
 }

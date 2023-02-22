@@ -1,14 +1,11 @@
 package com.cocos.base;
 
-
-
-
-import com.kedo.commonlibrary.application.BaseApplication;
+import com.kedo.commonlibrary.ext.Ktx;
 
 import java.util.List;
 
 public class Live2dHelper {
-    public static String defaultPath = BaseApplication.mApplication.getFilesDir().getAbsolutePath() + "/live2d/";
+    public static String defaultPath = Ktx.app.getFilesDir().getAbsolutePath() + "/live2d/";
 
     public static String defaultModel = "A001爱丽丝";
 

@@ -1,6 +1,6 @@
 package com.kedo.commonlibrary.network.interceptor
 
-import com.kedo.commonlibrary.application.BaseApplication
+import com.kedo.commonlibrary.ext.appContext
 import com.kedo.commonlibrary.network.NetworkUtil
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -15,13 +15,13 @@ import okhttp3.Response
 class CacheInterceptor(var day: Int = 7) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
-        if (!com.kedo.commonlibrary.network.NetworkUtil.isNetworkAvailable(BaseApplication.mApplication)) {
+        if (!NetworkUtil.isNetworkAvailable(appContext)) {
             request = request.newBuilder()
                 .cacheControl(CacheControl.FORCE_CACHE)
                 .build()
         }
         val response = chain.proceed(request)
-        if (!com.kedo.commonlibrary.network.NetworkUtil.isNetworkAvailable(BaseApplication.mApplication)) {
+        if (!NetworkUtil.isNetworkAvailable(appContext)) {
             val maxAge = 60 * 60
             response.newBuilder()
                 .removeHeader("Pragma")

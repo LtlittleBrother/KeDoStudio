@@ -16,28 +16,8 @@ import com.kedo.commonlibrary.network.manager.NetworkStateReceive
  */
 class BaseApplication : Application() {
 
-    companion object {
-        lateinit var mApplication: Application
-        private var mNetworkStateReceive: NetworkStateReceive? = null
-        var watchActivityLife = true
-        var watchAppLife = true
-    }
-
     override fun onCreate() {
         super.onCreate()
-
-    }
-
-
-    private fun install(application: Application) {
-        mApplication = application
-        mNetworkStateReceive = NetworkStateReceive()
-        mApplication.registerReceiver(
-            mNetworkStateReceive,
-            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-        )
-        if (watchActivityLife) application.registerActivityLifecycleCallbacks(KtxLifeCycleCallBack())
-        if (watchAppLife) ProcessLifecycleOwner.get().lifecycle.addObserver(KtxAppLifeObserver)
     }
 
 }

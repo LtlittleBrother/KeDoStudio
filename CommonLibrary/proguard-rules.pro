@@ -126,3 +126,10 @@ public static * bind(android.view.View);
 
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+
+#okdownload
+-keepnames class com.liulishuo.okdownload.core.connection.DownloadOkHttp3Connection
+-keep class com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnSQLite {
+        public com.liulishuo.okdownload.core.breakpoint.DownloadStore createRemitSelf();
+        public com.liulishuo.okdownload.core.breakpoint.BreakpointStoreOnSQLite(android.content.Context);
+}

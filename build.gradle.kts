@@ -8,9 +8,8 @@ buildscript {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven {
-            url = uri("https://jitpack.io")
-        }
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.2.2")
@@ -25,6 +24,7 @@ allprojects {
         maven {
             url = uri("https://jitpack.io")
         }
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
 }
 
@@ -32,13 +32,13 @@ allprojects {
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.android")
     apply(plugin = "com.repo.plugin")
-    if (name == "app"){
+    if (name == "app") {
         apply(plugin = "com.android.application")
-    }else{
+    } else {
         apply(plugin = "com.android.library")
     }
 }
 
-tasks.create("clean", type = Delete::class){
+tasks.create("clean", type = Delete::class) {
     rootProject.buildDir
 }

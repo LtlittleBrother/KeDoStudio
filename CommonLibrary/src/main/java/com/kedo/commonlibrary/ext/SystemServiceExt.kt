@@ -11,6 +11,7 @@ import android.media.MediaRouter
 import android.net.ConnectivityManager
 import android.net.wifi.WifiManager
 import android.os.BatteryManager
+import android.os.Build
 import android.os.PowerManager
 import android.os.Vibrator
 import android.os.storage.StorageManager
@@ -60,4 +61,15 @@ val Context.downloadManager get() = getSystemService<DownloadManager>()
 val Context.batteryManager get() = getSystemService<BatteryManager>()
 val Context.jobScheduler get() = getSystemService<JobScheduler>()
 val Context.accessibilityManager get() = getSystemService<AccessibilityManager>()
+
+/**
+ * 是否开启定位服务
+ * */
+fun Context.isOpenLocationServer(): Boolean{
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        locationManager?.isLocationEnabled?: false
+    } else {
+        locationManager?.isProviderEnabled(LocationManager.GPS_PROVIDER)?: false
+    }
+}
 

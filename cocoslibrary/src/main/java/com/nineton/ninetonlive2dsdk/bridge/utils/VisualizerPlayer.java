@@ -7,13 +7,15 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.audiofx.Visualizer;
 import android.util.Log;
-import com.kedo.commonlibrary.application.BaseApplication;
+
 
 import java.io.IOException;
 
 import androidx.core.content.PermissionChecker;
 
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
+
+import com.kedo.commonlibrary.ext.Ktx;
 
 public class VisualizerPlayer {
     private Visualizer mVisualizer;
@@ -33,7 +35,7 @@ public class VisualizerPlayer {
             });
         }
         try {
-            audioManager = (AudioManager) BaseApplication.mApplication.getSystemService(Context.AUDIO_SERVICE);
+            audioManager = (AudioManager) Ktx.Companion.getApp().getSystemService(Context.AUDIO_SERVICE);
             max = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
             cur = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             scale = cur / max;
@@ -146,7 +148,7 @@ public class VisualizerPlayer {
     public void playVoiceAndSpeakAsset(int resId) {
         isStop = false;
         try {
-            AssetFileDescriptor afd= BaseApplication.mApplication.getResources().openRawResourceFd(resId);
+            AssetFileDescriptor afd= Ktx.Companion.getApp().getResources().openRawResourceFd(resId);
             mediaPlayer.reset();
             mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
             mediaPlayer.setLooping(false);
@@ -167,7 +169,7 @@ public class VisualizerPlayer {
     }
 
     public boolean isHaveRecord() {
-        int result = PermissionChecker.checkSelfPermission(BaseApplication.mApplication
+        int result = PermissionChecker.checkSelfPermission(Ktx.Companion.getApp()
                         .getApplicationContext()
                 , Manifest.permission.RECORD_AUDIO);
         return result == PERMISSION_GRANTED && cur != 0f;

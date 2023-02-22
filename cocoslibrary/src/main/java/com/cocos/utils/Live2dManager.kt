@@ -9,6 +9,7 @@ import android.opengl.GLUtils
 import com.cocos.base.Live2dHelper
 import com.cocos.base.Part
 import com.kedo.commonlibrary.application.BaseApplication
+import com.kedo.commonlibrary.ext.appContext
 import com.nineton.ninetonlive2dsdk.bridge.utils.VisualizerPlayer
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView
 import java.io.File
@@ -89,7 +90,7 @@ class Live2dManager {
         }
 
         fun getJsonName(modelPath: String): String {
-            return File(BaseApplication.mApplication.filesDir.absolutePath + "/live2d/" + modelPath).listFiles()
+            return File(appContext.filesDir.absolutePath + "/live2d/" + modelPath).listFiles()
                 ?.firstOrNull {
                     it.name.endsWith("model3.json")
                 }?.name ?: ""
@@ -97,7 +98,7 @@ class Live2dManager {
 
         fun getTextureFilePath(modelPath: String): String {
             return "$modelPath/${
-                File(BaseApplication.mApplication.filesDir.absolutePath + "/live2d/" + modelPath).listFiles()
+                File(appContext.filesDir.absolutePath + "/live2d/" + modelPath).listFiles()
                     ?.first {
                         it.name.contains(".") && it.isDirectory
                     }?.name ?: ""
@@ -288,7 +289,7 @@ class Live2dManager {
 //    }
 
     private fun clearPictures() {
-        File(BaseApplication.mApplication.filesDir.absolutePath + "/live2d/").listFiles()?.forEach {
+        File(appContext.filesDir.absolutePath + "/live2d/").listFiles()?.forEach {
             if (it.name.startsWith("share_") && it.name.endsWith("jpg")) {
                 it.delete()
             }
@@ -359,7 +360,7 @@ class Live2dManager {
      */
     fun playBackgroundMusic(bgm: String) {
         glSurfaceView?.queueEvent {
-            Live2dHelper.playBackgroundMusic(BaseApplication.mApplication.filesDir.absolutePath + "/live2d/" + bgm)
+            Live2dHelper.playBackgroundMusic(appContext.filesDir.absolutePath + "/live2d/" + bgm)
         }
     }
 
@@ -508,7 +509,7 @@ class Live2dManager {
      * 检查模型的纹理 数量
      */
     private val baseFilePath by lazy {
-        BaseApplication.mApplication.filesDir.absolutePath + "/live2d/"
+        appContext.filesDir.absolutePath + "/live2d/"
     }
 
     fun getTextureSize(modelId: Int): Int {
