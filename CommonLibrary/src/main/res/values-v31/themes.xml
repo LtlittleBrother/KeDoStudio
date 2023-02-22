@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.SplashScreen" parent="Theme.SplashScreenBase">
-        <item name="postSplashScreenTheme">?android:attr/theme</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
-        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_launcher</item>
+    <!-- 安卓12启动-->
+    <style name="CommonAppTheme.WelcomeTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenBackground">@color/color_white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
     </style>
+
 </resources>
