@@ -22,6 +22,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(themeId)
         super.onCreate(savedInstanceState)
         _binding = inflateBindingWithGeneric(layoutInflater)
         setContentView(mBinding.root)
@@ -36,6 +37,8 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
     abstract fun initData()
 
     abstract fun initEvent()
+
+    protected open val themeId = com.kedo.commonlibrary.R.style.Theme_App
 
     //状态栏字体是深色，不写默认为亮色
     protected open val statusBarDarkFont = true

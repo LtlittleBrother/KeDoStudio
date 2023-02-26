@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kedo.commonlibrary.lifecycle.KtxAppLifeObserver
 import com.kedo.commonlibrary.lifecycle.KtxLifeCycleCallBack
 import com.kedo.commonlibrary.network.manager.NetworkStateReceive
@@ -18,6 +19,7 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ARouter.init(this)
     }
 
 }
