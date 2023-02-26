@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/DependenciePlugin" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cocoslibrary" />
+            <option value="$PROJECT_DIR$/mine" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -12,7 +12,7 @@ kapt {
     }
 }
 android {
-    namespace = BuildConfig.applicationId
+    namespace = "com.kedo.app"
     compileSdk = BuildConfig.compileSdk
 
     defaultConfig {
@@ -115,6 +115,7 @@ dependencies {
 
     implementation(project(":CommonLibrary"))
     implementation(project(":cocoslibrary"))
+    implementation(project(":mine"))
     kapt(Other.a_router_compiler)
     testImplementation(AndroidX.test_junit)
     androidTestImplementation(AndroidX.junit)
