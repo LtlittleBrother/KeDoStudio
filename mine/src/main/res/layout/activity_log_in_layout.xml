@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="SpUsage">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/qb_px_0"
+        android:layout_height="@dimen/qb_px_0"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mine_log_in_bg_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mWelcomeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/qb_px_94"
+        android:text="@string/mine_welcome_text"
+        android:textColor="@color/color_233558"
+        android:textSize="@dimen/qb_px_20"
+        app:layout_constraintBottom_toTopOf="@+id/mToAccountLogIvTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Space
+        android:id="@+id/mCenterSp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mToAccountLogIvTv"
+        android:layout_width="@dimen/qb_px_0"
+        android:layout_height="@dimen/qb_px_60"
+        android:layout_marginHorizontal="@dimen/qb_px_57"
+        android:layout_marginBottom="@dimen/qb_px_17"
+        android:gravity="center"
+        android:text="@string/mine_login_with_account_password_text"
+        android:textColor="@color/color_2b4664"
+        android:textSize="@dimen/qb_px_14"
+        android:background="@drawable/mine_account_password_log_in_drawable"
+        app:layout_constraintBottom_toTopOf="@+id/mToGoogleLonInTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mCenterSp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mToGoogleLonInTv"
+        android:layout_width="@dimen/qb_px_0"
+        android:layout_height="@dimen/qb_px_60"
+        android:layout_marginHorizontal="@dimen/qb_px_57"
+        android:layout_marginTop="@dimen/qb_px_17"
+        android:gravity="center"
+        android:background="@drawable/mine_google_log_in_drawable"
+        android:text="@string/mine_login_via_google_text"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/qb_px_14"
+        app:layout_constraintBottom_toBottomOf="@+id/mCenterSp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mToAccountLogIvTv"
+        app:layout_constraintVertical_bias="0.6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

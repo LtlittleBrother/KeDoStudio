@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mine_welcome_text">欢迎来到可咚助手</string>
+    <string name="mine_login_with_account_password_text">通过账号密码登录</string>
+    <string name="mine_login_via_google_text">通过Apple登录</string>
+</resources>

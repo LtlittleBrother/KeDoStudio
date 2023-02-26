@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mine_welcome_text">Welcome to Kedong Assistant</string>
+    <string name="mine_login_with_account_password_text">mine_login_with_account_password</string>
+    <string name="mine_login_via_google_text">mine_login_via_google</string>
+</resources>

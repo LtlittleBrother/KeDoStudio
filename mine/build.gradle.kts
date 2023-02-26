@@ -26,6 +26,24 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    flavorDimensions.addAll(listOf("env"))
+    productFlavors {
+        create("offLine") {
+            dimension = "env"
+        }
+        create("preLine") {
+            dimension = "env"
+        }
+        create("onLine") {
+            dimension = "env"
+
+        }
+        create("onLineArm64") {
+            dimension = "env"
+        }
+    }
+
+
     kotlinOptions {
         jvmTarget = "11"
     }

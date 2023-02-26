@@ -9,7 +9,7 @@ import com.kedo.commonlibrary.livedata.event.EventLiveData
  * @Author: LiuTao
  * @CreateDate: 2/17/23 2:49 PM
  */
-class BaseViewModel: ViewModel() {
+open class BaseViewModel: ViewModel() {
 
     val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
 
