@@ -10,9 +10,9 @@ object SignConfig {
 
     const val RELEASE_CONFIG = "releaseConfig"
     const val DEBUG_CONFIG = "debugConfig"
-    const val keyAlias = "test"
+    const val keyAlias = "kedoStudio"
     const val keyPassword = "123456"
-    const val storeFile = "test.jks"
+    const val storeFile = "kedoStudio.jks"
     const val storePassword = "123456"
 
 }
