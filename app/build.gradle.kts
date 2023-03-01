@@ -30,6 +30,8 @@ android {
             keyPassword = SignConfig.keyPassword
             storeFile = file(SignConfig.storeFile)
             storePassword = SignConfig.storePassword
+            enableV1Signing = true
+            enableV2Signing = true
         }
 
         create(SignConfig.DEBUG_CONFIG) {
@@ -37,6 +39,8 @@ android {
             keyPassword = SignConfig.keyPassword
             storeFile = file(SignConfig.storeFile)
             storePassword = SignConfig.storePassword
+            enableV1Signing = true
+            enableV2Signing = true
         }
     }
 
