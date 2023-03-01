@@ -92,6 +92,11 @@ dependencies {
     annotationProcessor(AndroidX.room_compiler)
     api(AndroidX.room_runtime)
 
+    // firebase
+    api(platform(FireBase.firebaseBom))
+    api(FireBase.firebaseAnalytics)
+    api(FireBase.firebaseCrashlytics)
+
     api(Other.adapter)
     api(Other.retrofit2)
     api(Other.retrofit2_converter_gson)

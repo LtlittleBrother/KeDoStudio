@@ -9,4 +9,5 @@ package com.kedo.dependencieplugin.manage
 object Google {
     const val material = "com.google.android.material:material:1.8.0"
     const val datastore_protobuf = "com.google.protobuf:protobuf-javalite:3.18.0"
+
 }

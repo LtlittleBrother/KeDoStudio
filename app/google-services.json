@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "561877924662",
+    "project_id": "kedostudio",
+    "storage_bucket": "kedostudio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561877924662:android:bd5dc88d373fc48a175197",
+        "android_client_info": {
+          "package_name": "com.love.love365"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561877924662-b7fspgr3qrsfduhisajt2dv8bs1osuqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.love.love365",
+            "certificate_hash": "dbfdd07b9dda86f27e9f713640a2e4872bf439f0"
+          }
+        },
+        {
+          "client_id": "561877924662-ukbqh0h2p46lp8c80h2ppr668sg5au6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkq6JuoCMj0fMMSCq4aNFcoaDWbhquPeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561877924662-ukbqh0h2p46lp8c80h2ppr668sg5au6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
