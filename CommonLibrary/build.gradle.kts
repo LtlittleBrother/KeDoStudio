@@ -102,7 +102,6 @@ dependencies {
     api(Other.retrofit2_converter_gson)
     api(Other.okhttp)
     api(Other.okhttp_interceptor)
-    api(Other.util_code)
     api(Other.immersion_bar)
     api(Other.immersion_bar_kts)
     api(Other.a_router)
@@ -111,6 +110,8 @@ dependencies {
     api(Other.ok_download)
     api(Other.ok_download_sqlite)
     api(Other.ok_download_okhttp)
+    api(Other.persistent_cookie_jar)
+    api(project(":utilcode"))
     kapt(Other.a_router_compiler)
 
     testImplementation(AndroidX.test_junit)

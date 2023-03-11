@@ -37,8 +37,8 @@ abstract class BaseFragment<T : ViewBinding>: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
-        initData()
         initEvent()
+        initData()
     }
 
     fun showLoading(loadingMessage: String){

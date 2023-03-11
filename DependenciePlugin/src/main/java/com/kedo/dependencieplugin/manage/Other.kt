@@ -30,4 +30,7 @@ object Other {
     const val ok_download = "com.liulishuo.okdownload:okdownload:${Version.ok_download_version}"
     const val ok_download_sqlite = "com.liulishuo.okdownload:sqlite:${Version.ok_download_version}"
     const val ok_download_okhttp = "com.liulishuo.okdownload:okhttp:${Version.ok_download_version}"
+
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    const val persistent_cookie_jar = "com.github.franmontiel:PersistentCookieJar:v1.0.1"
 }

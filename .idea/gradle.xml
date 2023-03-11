@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cocoslibrary" />
             <option value="$PROJECT_DIR$/mine" />
+            <option value="$PROJECT_DIR$/utilcode" />
           </set>
         </option>
       </GradleProjectSettings>
