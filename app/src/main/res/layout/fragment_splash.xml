@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,4 +13,31 @@
         android:gravity="center"
         android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ProgressBar
+        android:id="@+id/mProgressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/qb_px_36"
+        android:layout_marginHorizontal="@dimen/qb_px_16"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/download_progress_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mProgressTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/color_black"
+        android:shadowRadius="3.0"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="@+id/mProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/mProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/mProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/mProgressBar"
+        tools:text="100%" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
