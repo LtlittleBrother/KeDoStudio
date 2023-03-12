@@ -1,17 +1,23 @@
 package com.kedo.app.fragment
 
+import androidx.fragment.app.viewModels
 import com.kedo.app.MainActivity
 import com.kedo.app.databinding.FragmentSplashBinding
+import com.kedo.app.viewmodel.SplashViewModel
 import com.kedo.commonlibrary.fragment.BaseFragment
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
+
+    private val mViewModel by viewModels<SplashViewModel>()
 
     override fun initUi() {
 
     }
 
     override fun initData() {
-
+        mBinding.mStartTv.setOnClickListener {
+            mViewModel.getModel()
+        }
     }
 
     override fun initEvent() {

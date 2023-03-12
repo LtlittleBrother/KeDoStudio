@@ -33,4 +33,6 @@ object Other {
 
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     const val persistent_cookie_jar = "com.github.franmontiel:PersistentCookieJar:v1.0.1"
+
+    const val toast = "com.github.getActivity:Toaster:12.0"
 }

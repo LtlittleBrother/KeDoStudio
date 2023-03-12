@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:561877924662:android:bd5dc88d373fc48a175197",
         "android_client_info": {
-          "package_name": "com.love.love365"
+          "package_name": "com.kedo.studio"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "561877924662-b7fspgr3qrsfduhisajt2dv8bs1osuqb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.love.love365",
+            "package_name": "com.kedo.studio",
             "certificate_hash": "dbfdd07b9dda86f27e9f713640a2e4872bf439f0"
           }
         },

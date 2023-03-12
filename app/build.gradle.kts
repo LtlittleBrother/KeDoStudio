@@ -77,28 +77,24 @@ android {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
         }
         create("preLine") {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
         }
         create("onLine") {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
         }
         create("onLineArm64") {
             dimension = "env"
             ndk {
-                abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
+                abiFilters.add("arm64-v8a")
             }
         }
     }

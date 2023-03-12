@@ -4,13 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.kedo.commonlibrary.activity.BaseActivity
 import com.kedo.commonlibrary.fragment.BaseFragment
+import com.kedo.commonlibrary.network.AppException
+import com.kedo.commonlibrary.network.BaseResponse
+import com.kedo.commonlibrary.network.ExceptionHandle
 import com.kedo.commonlibrary.state.ResultState
 import com.kedo.commonlibrary.state.paresException
 import com.kedo.commonlibrary.state.paresResult
 import com.kedo.commonlibrary.viewmodel.BaseViewModel
-import com.kedo.commonlibrary.network.AppException
-import com.kedo.commonlibrary.network.BaseResponse
-import com.kedo.commonlibrary.network.ExceptionHandle
 import kotlinx.coroutines.*
 
 /**
@@ -27,9 +27,9 @@ import kotlinx.coroutines.*
  * @param onError 失败回调
  *
  */
-fun <T> com.kedo.commonlibrary.activity.BaseActivity<*>.parseState(
+fun <T> BaseActivity<*>.parseState(
     resultState: ResultState<T>,
-    onSuccess: (T) -> Unit,
+    onSuccess: (T?) -> Unit,
     onError: ((AppException) -> Unit)? = null,
     onLoading: (() -> Unit)? = null
 ) {
@@ -61,13 +61,13 @@ fun <T> BaseFragment<*>.parseState(
     resultState: ResultState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: ((message:String) -> Unit)? = null
+    onLoading: ((message: String) -> Unit)? = null
 ) {
     when (resultState) {
         is ResultState.Loading -> {
-            if(onLoading==null){
+            if (onLoading == null) {
                 showLoading(resultState.loadingMessage)
-            }else{
+            } else {
                 onLoading.invoke(resultState.loadingMessage)
             }
         }
@@ -91,8 +91,8 @@ fun <T> BaseFragment<*>.parseState(
  * @param loadingMessage 加载框提示内容
  */
 fun <T> BaseViewModel.request(
-    block: suspend () -> BaseResponse<T>,
-    resultState: MutableLiveData<ResultState<T>>,
+    block: suspend () -> BaseResponse<T?>,
+    resultState: MutableLiveData<ResultState<T?>>,
     isShowDialog: Boolean = false,
     loadingMessage: String = "请求网络中..."
 ): Job {
@@ -150,9 +150,9 @@ fun <T> BaseViewModel.requestNoCheck(
  * @param loadingMessage 加载框提示内容
  */
 fun <T> BaseViewModel.request(
-    block: suspend () -> BaseResponse<T>,
-    success: (T) -> Unit,
-    error: (AppException) -> Unit = {},
+    block: suspend () -> BaseResponse<T?>,
+    success: (T?) -> Unit,
+    error: (AppException) -> Unit = { showToastShort(it.errorMsg) },
     isShowDialog: Boolean = false,
     loadingMessage: String = "请求网络中..."
 ): Job {
@@ -167,8 +167,7 @@ fun <T> BaseViewModel.request(
             loadingChange.dismissDialog.postValue(false)
             runCatching {
                 //校验请求结果码是否正确，不正确会抛出异常走下面的onFailure
-                executeResponse(it) { t -> success(t)
-                }
+                executeResponse(it) { t -> success(t) }
             }.onFailure { e ->
                 //打印错误消息
                 e.message?.loge()
@@ -234,7 +233,7 @@ fun <T> BaseViewModel.requestNoCheck(
  */
 suspend fun <T> executeResponse(
     response: BaseResponse<T>,
-    success: suspend CoroutineScope.(T) -> Unit
+    success: suspend CoroutineScope.(T?) -> Unit
 ) {
     coroutineScope {
         when {

@@ -29,33 +29,29 @@ android {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
-            buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
+            buildConfigField("String","BaseUrl","\"http://120.53.11.38:9002\"")
         }
         create("preLine") {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
-            buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
+            buildConfigField("String","BaseUrl","\"http://120.53.11.38:9002\"")
         }
         create("onLine") {
             dimension = "env"
             ndk {
                 abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
             }
-            buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
+            buildConfigField("String","BaseUrl","\"http://120.53.11.38:9002\"")
         }
         create("onLineArm64") {
             dimension = "env"
             ndk {
-                abiFilters.add("armeabi-v7a")
-                abiFilters.add("x86_64")
+                abiFilters.add("arm64-v8a")
             }
-            buildConfigField("String","BaseUrl","\"https://u.y.qq.com\"")
+            buildConfigField("String","BaseUrl","\"http://120.53.11.38:9002\"")
         }
     }
 
@@ -111,6 +107,7 @@ dependencies {
     api(Other.ok_download_sqlite)
     api(Other.ok_download_okhttp)
     api(Other.persistent_cookie_jar)
+    api(Other.toast)
     api(project(":utilcode"))
     kapt(Other.a_router_compiler)
 

@@ -34,7 +34,11 @@ android {
             dimension = "env"
         }
     }
-
+    sourceSets {
+        getByName("main"){
+            jniLibs.srcDirs("libs")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
