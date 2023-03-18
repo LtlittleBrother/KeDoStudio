@@ -39,8 +39,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun initData() {
         mBinding.mStartTv.setOnClickListener {
-            DownloadManage.instant()
-                .startSingleDownloadTask(url, "AndroidStudio.exe", true, mListener)
+            mViewModel.getModel()
+//            DownloadManage.instant()
+//                .startSingleDownloadTask(url, "AndroidStudio.exe", true, mListener)
         }
     }
 

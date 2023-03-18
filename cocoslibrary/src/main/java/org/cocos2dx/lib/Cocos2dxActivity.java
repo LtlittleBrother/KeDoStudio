@@ -63,7 +63,7 @@ public abstract class Cocos2dxActivity extends FragmentActivity implements Cocos
     private Cocos2dxHandler mHandler = null;
     private static Cocos2dxActivity sContext = null;
     private Cocos2dxVideoHelper mVideoHelper = null;
-//    private Cocos2dxWebViewHelper mWebViewHelper = null;
+    //    private Cocos2dxWebViewHelper mWebViewHelper = null;
 //    private Cocos2dxEditBoxHelper mEditBoxHelper = null;
     private boolean hasFocus = false;
     private boolean showVirtualButton = true;
