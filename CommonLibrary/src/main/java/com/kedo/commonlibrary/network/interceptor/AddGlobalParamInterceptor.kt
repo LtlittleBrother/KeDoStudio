@@ -1,15 +1,12 @@
 package com.kedo.commonlibrary.network.interceptor
 
-import android.text.TextUtils
 import android.util.Base64
 import android.webkit.WebSettings
 import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.Utils
 import com.kedo.commonlibrary.network.AesUtils
-import okhttp3.FormBody
-import okhttp3.Interceptor
-import okhttp3.Response
+import okhttp3.*
 import okio.Buffer
 import java.net.URLEncoder
 
@@ -55,7 +52,8 @@ class AddGlobalParamInterceptor : Interceptor {
                     val buffer = Buffer()
                     it.writeTo(buffer)
                     val utf8 = buffer.readByteString().utf8()
-                    requestParams["request_body_signature"] = EncryptUtils.encryptMD5ToString(utf8,false)
+                    requestParams["request_body_signature"] =
+                        EncryptUtils.encryptMD5ToString(utf8, false)
                 }
 
             }
@@ -65,9 +63,6 @@ class AddGlobalParamInterceptor : Interceptor {
         paramMap?.let {
             paramMap["sn"] = getSignStr(it, requestParams)
         }
-
-//        val token = UserInfoExt.getToken()
-//        newHeaderBuilder["Authorization"] = if (!TextUtils.isEmpty(token)) "Bearer $token" else ""
         newHeaderBuilder["Content-Type"] = "application/json"
         newHeaderBuilder["User-Agent"] = getUserAgent() ?: ""
         paramMap?.let {
@@ -75,18 +70,12 @@ class AddGlobalParamInterceptor : Interceptor {
         }
         newRequestBuilder.headers(newHeaderBuilder.build())
 
-//        loggerI("retrofit 新接口加密前：" + gson.toJson(paramMap))
-
         val newRequest =
             newRequestBuilder.method(oldRequest.method, oldRequest.body).build()
-        try {
-            return chain.proceed(newRequest)
-        } catch (e: Exception) {
-            throw e
-        }
+        return chain.proceed(newRequest)
     }
 
-    private fun getUserAgent(): String? {
+    private fun getUserAgent(): String {
         val userAgent: String = try {
             WebSettings.getDefaultUserAgent(Utils.getApp())
         } catch (var5: java.lang.Exception) {

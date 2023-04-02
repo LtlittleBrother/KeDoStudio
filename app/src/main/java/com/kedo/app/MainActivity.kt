@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,7 @@ class MainActivity : Cocos2dxActivity(), Live2dHelper.LoadListener{
     override fun init() {
         super.init()
         setContentView(mBinding.root)
-        refreshModel()
+//        refreshModel()
     }
 
     fun showContent() {
@@ -61,6 +62,7 @@ class MainActivity : Cocos2dxActivity(), Live2dHelper.LoadListener{
 
     fun refreshModel(){
         startDrawSurfaceFrame()
+        Log.d("liutao","defaultPath == $defaultPath")
         manager.refreshModel("model", "huanzhuang.model3.json", "defaultBack.png",
             parentPath = defaultPath
         )

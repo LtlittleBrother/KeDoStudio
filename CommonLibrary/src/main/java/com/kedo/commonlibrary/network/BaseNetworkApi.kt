@@ -1,8 +1,10 @@
 package com.kedo.commonlibrary.network
 
+import com.kedo.commonlibrary.network.converter.MyGsonConverterFactory
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * 作者　: hegaojian
@@ -13,6 +15,7 @@ abstract class BaseNetworkApi {
 
     fun <T> getApi(serviceClass: Class<T>, baseUrl: String): T {
         val retrofitBuilder = Retrofit.Builder()
+//            .addConverterFactory(MyGsonConverterFactory())
             .baseUrl(baseUrl)
             .client(okHttpClient)
         return setRetrofitBuilder(retrofitBuilder).build().create(serviceClass)

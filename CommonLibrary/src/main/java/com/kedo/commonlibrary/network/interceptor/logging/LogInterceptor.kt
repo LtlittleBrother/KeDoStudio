@@ -1,12 +1,24 @@
 package com.kedo.commonlibrary.network.interceptor.logging
 
+import android.util.JsonToken
 import android.util.Log
+import com.blankj.utilcode.util.EncryptUtils
+import com.blankj.utilcode.util.GsonUtils
+import com.kedo.commonlibrary.network.AesUtils
+import com.kedo.commonlibrary.network.ApiResponse
+import com.kedo.commonlibrary.network.DecryData
 import com.kedo.commonlibrary.util.CharacterHandler.Companion.jsonFormat
 import com.kedo.commonlibrary.util.UrlEncoderUtils.Companion.hasUrlEncoded
 import com.kedo.commonlibrary.util.ZipHelper.Companion.decompressForGzip
 import com.kedo.commonlibrary.util.ZipHelper.Companion.decompressToStringForZlib
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import okio.Buffer
+import okio.BufferedSource
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
@@ -43,7 +55,7 @@ class LogInterceptor : Interceptor {
         val logResponse =
             printLevel == Level.ALL || printLevel != Level.NONE && printLevel == Level.RESPONSE
         val t1 = if (logResponse) System.nanoTime() else 0
-        val originalResponse: Response = try {
+        var originalResponse: Response = try {
             chain.proceed(request)
         } catch (e: Exception) {
             e.message?.let {
@@ -52,8 +64,39 @@ class LogInterceptor : Interceptor {
             throw e
         }
         val t2 = if (logResponse) System.nanoTime() else 0
+        try {
+            //解密服务端返回的数据
+            val contentType: MediaType? = originalResponse.body?.contentType()
+            val bodyString = originalResponse.body?.string()
+            val jsonObject = JSONObject(bodyString?:"")
+            var code = 0
+            var msg = ""
+            var dataObject: Any? = null
+            if (jsonObject.has("data") && jsonObject.has("code")){
+                code = jsonObject.getInt("code")
+                msg = jsonObject.getString("msg")
+                val data = jsonObject.getString("data")
+                val responseData = AesUtils.decrypt(data.toByteArray())
+                if (responseData?.isNotEmpty() == true){
+                    val jsonString = String(responseData)
+                    val dataJson= JSONTokener(jsonString).nextValue()
+                    if (dataJson is JSONArray){
+                        dataObject = JSONArray(jsonString)
+                    }else if (dataJson is JSONObject){
+                        dataObject = JSONObject(jsonString)
+                    }
+                }
+            }
+            val apiResponse = ApiResponse(code,msg,dataObject)
+            val jsonString = GsonUtils.toJson(apiResponse)
+            //生成新的ResponseBody
+            val newResponseBody = ResponseBody.create(contentType, jsonString)
+            //response
+            originalResponse = originalResponse.newBuilder().body(newResponseBody).build()
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
         val responseBody = originalResponse.body
-
         //打印响应结果
         var bodyString: String? = null
         if (responseBody != null && isParseable(responseBody.contentType())) {

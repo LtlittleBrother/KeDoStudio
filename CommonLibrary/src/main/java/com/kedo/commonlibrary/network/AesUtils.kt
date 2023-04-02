@@ -12,8 +12,8 @@ object AesUtils {
      * 算法/模式/填充
      */
     private const val CipherMode = "AES/CBC/PKCS5Padding"
-    private const val key_ = "Lbt*GT3HNdA9E/16"
-    private const val iv = "aMRRmb4JHIjo8BT7"
+    private const val key_ = "UcLAFLxsZidSX0wM"
+    private const val iv = "1016449182158477"
     /**
      * 创建密钥
      */
