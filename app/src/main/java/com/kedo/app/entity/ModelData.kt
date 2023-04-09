@@ -3,6 +3,7 @@ package com.kedo.app.entity
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+
 @Parcelize
 data class ModelData(
     //试穿语音

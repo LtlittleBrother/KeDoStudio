@@ -1,9 +1,11 @@
 package com.kedo.commonlibrary.network
 
 import android.util.Base64
+import com.blankj.utilcode.util.EncryptUtils
 import java.io.UnsupportedEncodingException
 import java.nio.charset.Charset
 import javax.crypto.Cipher
+import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
@@ -91,14 +93,28 @@ object AesUtils {
     }
 
     /**
+     * content: 解密内容(base64编码格式)
+     * slatKey: 加密时使用的盐，16位字符串
+     * vectorKey: 加密时使用的向量，16位字符串
+     */
+    fun decrypt(content: String?): String? {
+        val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
+        val secretKey: SecretKey = SecretKeySpec(key_.toByteArray(), "AES")
+        val iv = IvParameterSpec(iv.toByteArray())
+        cipher.init(Cipher.DECRYPT_MODE, secretKey, iv)
+        val encrypted = cipher.doFinal(content?.toByteArray())
+        return String(encrypted)
+    }
+
+    /**
      * 解密字节数组
      */
     fun decrypt(content: ByteArray?): ByteArray? {
         try {
-            val key = createKey(key_)
-            val cipher = Cipher.getInstance(CipherMode)
-            cipher.init(Cipher.DECRYPT_MODE, key, createIV(iv))
-            return cipher.doFinal(content)
+            return EncryptUtils.decryptHexStringAES(
+                String(content ?: byteArrayOf()), key_.toByteArray(),
+                CipherMode, iv.toByteArray()
+            )
         } catch (e: Exception) {
             e.printStackTrace()
         }

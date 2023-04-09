@@ -4,40 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:ignore="SpUsage"
+    android:background="@color/white"
     tools:context=".fragment.SplashFragment">
 
-    <TextView
-        android:id="@+id/mStartTv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/qb_px_0"
+        android:layout_height="@dimen/qb_px_0"
+        app:srcCompat="@drawable/bg_icon"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ProgressBar
         android:id="@+id/mProgressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="@dimen/qb_px_36"
+        android:layout_height="@dimen/qb_px_10"
         android:layout_marginHorizontal="@dimen/qb_px_16"
         android:max="100"
         android:progress="0"
+        android:layout_marginBottom="@dimen/qb_px_3"
         android:progressDrawable="@drawable/download_progress_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mProgressTv"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Space
+        android:id="@+id/mCenterSp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mProgressTv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:shadowColor="@color/color_black"
-        android:shadowRadius="3.0"
-        android:textColor="@color/color_white"
-        app:layout_constraintBottom_toBottomOf="@+id/mProgressBar"
-        app:layout_constraintEnd_toEndOf="@+id/mProgressBar"
-        app:layout_constraintStart_toStartOf="@+id/mProgressBar"
-        app:layout_constraintTop_toTopOf="@+id/mProgressBar"
-        tools:text="100%" />
+        android:layout_height="@dimen/qb_px_22"
+        tools:text="@string/splash_progress_text"
+        android:gravity="center"
+        android:textColor="@color/color_2b4664"
+        android:textSize="@dimen/qb_px_10"
+        android:layout_marginBottom="@dimen/qb_px_86"
+        app:layout_constraintStart_toStartOf="@+id/mCenterSp"
+        app:layout_constraintEnd_toEndOf="@+id/mCenterSp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

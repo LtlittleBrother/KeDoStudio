@@ -53,7 +53,7 @@ class MainActivity : Cocos2dxActivity(), Live2dHelper.LoadListener{
     override fun init() {
         super.init()
         setContentView(mBinding.root)
-//        refreshModel()
+        refreshModel()
     }
 
     fun showContent() {

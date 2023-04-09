@@ -9,8 +9,8 @@ import com.kedo.commonlibrary.viewmodel.BaseViewModel
 
 class SplashViewModel : BaseViewModel() {
 
-    private val _modelData = MutableLiveData<ModelData>()
-    val mModelData: LiveData<ModelData> = _modelData
+    private val _modelData = MutableLiveData<ArrayList<ModelData>>()
+    val mModelData: LiveData<ArrayList<ModelData>> = _modelData
     private val mRepository by lazy {
         SplashRepository()
     }

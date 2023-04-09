@@ -8,8 +8,8 @@
         android:id="@android:id/secondaryProgress"
         android:drawable="@drawable/download_progress_secondary_progress">
     </item>
-    <item
-        android:id="@android:id/progress"
-        android:drawable="@drawable/download_progress_progress">
+    <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%"
+            android:drawable="@drawable/download_progress_progress"   />
     </item>
 </layer-list>

@@ -4,6 +4,8 @@ import android.util.JsonToken
 import android.util.Log
 import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.GsonUtils
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.kedo.commonlibrary.network.AesUtils
 import com.kedo.commonlibrary.network.ApiResponse
 import com.kedo.commonlibrary.network.DecryData
@@ -87,7 +89,9 @@ class LogInterceptor : Interceptor {
                     }
                 }
             }
-            val apiResponse = ApiResponse(code,msg,dataObject)
+            val jsonParser = JsonParser()
+            val parse = jsonParser.parse(dataObject.toString())
+            val apiResponse = ApiResponse(code,msg, parse)
             val jsonString = GsonUtils.toJson(apiResponse)
             //生成新的ResponseBody
             val newResponseBody = ResponseBody.create(contentType, jsonString)

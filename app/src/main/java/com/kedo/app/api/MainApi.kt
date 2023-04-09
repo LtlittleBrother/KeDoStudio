@@ -8,6 +8,6 @@ import retrofit2.http.GET
 interface MainApi {
 
     @GET("/tKdHelperModel/getModel")
-    suspend fun getModel(): ApiResponse<ModelData?>
+    suspend fun getModel(): ApiResponse<ArrayList<ModelData>?>
 
 }

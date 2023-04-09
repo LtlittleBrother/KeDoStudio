@@ -12,7 +12,7 @@ class SplashRepository: BaseRepository() {
         getApi(MainApi::class.java)
     }
 
-    suspend fun getModel(): BaseResponse<ModelData?> {
+    suspend fun getModel(): BaseResponse<ArrayList<ModelData>?> {
         return executeRequest {
             mApi.getModel()
         }
