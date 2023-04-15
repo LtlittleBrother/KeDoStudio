@@ -2,9 +2,6 @@ package com.kedo.app.fragment
 
 import android.util.Log
 import androidx.fragment.app.viewModels
-import com.blankj.utilcode.util.EncryptUtils
-import com.blankj.utilcode.util.FileUtils
-import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.ZipUtils
 import com.kedo.app.MainActivity
 import com.kedo.app.R
@@ -19,7 +16,6 @@ import com.kedo.commonlibrary.manage.lsitener.CommonDownloadListener
 import com.liulishuo.okdownload.DownloadTask
 import com.liulishuo.okdownload.core.cause.EndCause
 import java.io.File
-import java.lang.Exception
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
@@ -42,20 +38,18 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
         override fun taskEnd(task: DownloadTask, cause: EndCause, realCause: Exception?) {
             super.taskEnd(task, cause, realCause)
-            if (mUnZipFile.exists()){
-                showMainTab()
+            if (!mDownloadFile.exists()){
                 return
             }
-            if (!mUnZipFile.exists()){
-                mUnZipFile.mkdirs()
+            mUnZipFile.mkdirs()
+            try {
+                ZipUtils.unzipFile(mDownloadFile,mUnZipFile)
+                mBinding.mProgressBar.progress = 100
+                mBinding.mProgressTv.text =  resources.getString(R.string.splash_progress_text).plus("(100%)")
+                showMainTab()
+            }catch (e: Exception){
+                e.printStackTrace()
             }
-            val files = ZipUtils.unzipFile(mDownloadFile,mUnZipFile)
-            if (files.isNullOrEmpty()){
-                FileUtils.deleteAllInDir(defaultPath)
-            }
-            mBinding.mProgressBar.progress = 100
-            mBinding.mProgressTv.text =  resources.getString(R.string.splash_progress_text).plus("(100%)")
-            showMainTab()
         }
     }
 
@@ -78,7 +72,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 activity?.finish()
             }
             downloadUrl = BuildConfig.BaseUrl.plus(downloadUrl)
-            DownloadManage.instant().startSingleDownloadTask(downloadUrl,mDownloadFile.name, downloadListener = mListener)
+            DownloadManage.instant().startSingleDownloadTask(downloadUrl,mDownloadFile.name, true,downloadListener = mListener)
         }
     }
 
@@ -87,6 +81,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun showMainTab() {
+        Log.d("liutao","showMainTab")
         if (activity is MainActivity) {
             activity?.let {
                 (it as MainActivity).showContent()

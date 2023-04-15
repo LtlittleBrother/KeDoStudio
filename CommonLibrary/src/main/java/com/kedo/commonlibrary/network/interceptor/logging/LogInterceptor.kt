@@ -69,7 +69,7 @@ class LogInterceptor : Interceptor {
         try {
             //解密服务端返回的数据
             val contentType: MediaType? = originalResponse.body?.contentType()
-            val bodyString = originalResponse.body?.string()
+            val bodyString = originalResponse.peekBody(Long.MAX_VALUE).string()
             val jsonObject = JSONObject(bodyString?:"")
             var code = 0
             var msg = ""

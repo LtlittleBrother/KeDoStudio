@@ -23,11 +23,8 @@ class DownloadManage {
 
     private val mTaskList = arrayListOf<DownloadTask>()
 
-    /**
-     * 任务
-     * @param passIfAlreadyCompleted 是否强制重新下载
-     * */
-    fun startSingleDownloadTask(downloadUrl: String, fileName: String,passIfAlreadyCompleted: Boolean = false,downloadListener: CommonDownloadListener){
+
+    fun startSingleDownloadTask(downloadUrl: String, fileName: String,passIfAlreadyCompleted: Boolean = true,downloadListener: CommonDownloadListener){
         val task = DownloadTask.Builder(downloadUrl, mLiveFileParent)
             .setMinIntervalMillisCallbackProcess(30)
             .setPassIfAlreadyCompleted(passIfAlreadyCompleted)

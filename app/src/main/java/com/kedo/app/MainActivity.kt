@@ -53,29 +53,29 @@ class MainActivity : Cocos2dxActivity(), Live2dHelper.LoadListener{
     override fun init() {
         super.init()
         setContentView(mBinding.root)
-        refreshModel()
+
     }
 
     fun showContent() {
-
+        refreshModel()
     }
 
     fun refreshModel(){
         startDrawSurfaceFrame()
         Log.d("liutao","defaultPath == $defaultPath")
-        manager.refreshModel("model", "huanzhuang.model3.json", "defaultBack.png",
+        manager.refreshModel("model", "huanzhuang2.model3.json", "defaultBack.png",
             parentPath = defaultPath
         )
     }
 
     fun startDrawSurfaceFrame() {
         //绘制live2d surface 里的逻辑
-        if (!mBinding.dressRootView.contains(mFrameLayout)) {
-            mBinding.dressRootView.post {
+        mBinding.dressRootView.post {
+            if (!mBinding.dressRootView.contains(mFrameLayout)) {
                 mBinding.dressRootView.addView(mFrameLayout, 0)
+                manager.initSurface(glSurfaceView)
+                lifecycle.addObserver(glSurfaceView)
             }
-            manager.initSurface(glSurfaceView)
-            lifecycle.addObserver(glSurfaceView)
         }
     }
 

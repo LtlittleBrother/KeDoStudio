@@ -105,7 +105,7 @@ dependencies {
     api(Other.retrofitUrlManager)
     api(Other.ok_download)
     api(Other.ok_download_sqlite)
-    api(Other.ok_download_okhttp)
+//    api(Other.ok_download_okhttp)
     api(Other.persistent_cookie_jar)
     api(Other.toast)
     api(project(":utilcode"))
