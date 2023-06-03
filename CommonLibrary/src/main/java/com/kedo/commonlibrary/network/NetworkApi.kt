@@ -11,6 +11,7 @@ import com.kedo.commonlibrary.network.interceptor.CacheInterceptor
 import com.kedo.commonlibrary.network.interceptor.logging.LogInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -47,10 +48,10 @@ class NetworkApi : BaseNetworkApi() {
             //添加Cookies自动持久化
             cookieJar(cookieJar)
             //添加缓存拦截器 可传入缓存天数，不传默认7天
-            addInterceptor(CacheInterceptor())
+//            addInterceptor(CacheInterceptor())
             addInterceptor(AddGlobalParamInterceptor())
+            addInterceptor(HttpLoggingInterceptor())
             // 日志拦截器
-            addInterceptor(LogInterceptor())
             //超时时间 连接、读、写
             connectTimeout(10, TimeUnit.SECONDS)
             readTimeout(5, TimeUnit.SECONDS)

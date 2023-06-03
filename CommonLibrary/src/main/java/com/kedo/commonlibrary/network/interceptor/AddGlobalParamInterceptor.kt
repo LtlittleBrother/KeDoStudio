@@ -1,13 +1,19 @@
 package com.kedo.commonlibrary.network.interceptor
 
 import android.util.Base64
+import android.util.Log
 import android.webkit.WebSettings
 import com.blankj.utilcode.util.EncryptUtils
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.Utils
+import com.google.gson.JsonParser
 import com.kedo.commonlibrary.network.AesUtils
+import com.kedo.commonlibrary.network.ApiResponse
 import okhttp3.*
 import okio.Buffer
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
 import java.net.URLEncoder
 
 /**
@@ -72,7 +78,52 @@ class AddGlobalParamInterceptor : Interceptor {
 
         val newRequest =
             newRequestBuilder.method(oldRequest.method, oldRequest.body).build()
-        return chain.proceed(newRequest)
+
+
+        var originalResponse: Response = try {
+            chain.proceed(newRequest)
+        } catch (e: Exception) {
+            e.message?.let {
+                Log.d("Http Error: %s", it)
+            }
+            throw e
+        }
+        try {
+            //解密服务端返回的数据
+            val contentType: MediaType? = originalResponse.body?.contentType()
+            val bodyString = originalResponse.peekBody(Long.MAX_VALUE).string()
+            val jsonObject = JSONObject(bodyString?:"")
+            var code = 0
+            var msg = ""
+            var dataObject: Any? = null
+            if (jsonObject.has("data") && jsonObject.has("code")){
+                code = jsonObject.getInt("code")
+                msg = jsonObject.getString("msg")
+                val data = jsonObject.getString("data")
+                val responseData = AesUtils.decrypt(data.toByteArray())
+                if (responseData?.isNotEmpty() == true){
+                    val jsonString = String(responseData)
+                    val dataJson= JSONTokener(jsonString).nextValue()
+                    if (dataJson is JSONArray){
+                        dataObject = JSONArray(jsonString)
+                    }else if (dataJson is JSONObject){
+                        dataObject = JSONObject(jsonString)
+                    }
+                }
+            }
+            val jsonParser = JsonParser()
+            val parse = jsonParser.parse(dataObject.toString())
+            val apiResponse = ApiResponse(code,msg, parse)
+            val jsonString = GsonUtils.toJson(apiResponse)
+            //生成新的ResponseBody
+            val newResponseBody = ResponseBody.create(contentType, jsonString)
+            //response
+            originalResponse = originalResponse.newBuilder().body(newResponseBody).build()
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+
+        return originalResponse
     }
 
     private fun getUserAgent(): String {
